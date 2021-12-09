@@ -471,6 +471,7 @@ QBShared.Items = {
 	["box"] 		                 = {["name"] = "box", 			                ["label"] = "Box", 	                	["weight"] = 100, 		["type"] = "item", 		["image"] = "box.png", 	                ["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,	   ["combinable"] = nil,   ["description"] = "box"},
 	["stone"] 		 	 		     = {["name"] = "stone",                     	["label"] = "Stone",	 	            ["weight"] = 3500, 	    ["type"] = "item", 		["image"] = "stone.png", 		        ["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false,   ["combinable"] = nil,   ["description"] = "ORE"},
 	["washedstone"] 		         = {["name"] = "washedstone",                   ["label"] = "Washed Stone",	 	        ["weight"] = 3500, 	    ["type"] = "item", 		["image"] = "washedstone.png", 		    ["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false,   ["combinable"] = nil,   ["description"] = "ORE"},
+	["specialbadge"] 				 = {["name"] = "specialbadge", 			  		["label"] = "Police Badge", 			["weight"] = 1000, 		["type"] = "item", 		["image"] = "badge11.png", 	            ["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,	   ["combinable"] = nil,   ["description"] = "Special Badge of Law Enforcements"},
 }
 
 -- // HASH WEAPON ITEMS, NEED SOMETIMES TO GET INFO FOR CLIENT
@@ -1003,6 +1004,26 @@ QBShared.Jobs = {
 		grades = {
             ['0'] = {
                 name = 'Sales',
+                payment = 20
+            },
+        },
+	},
+	['dispatcher'] = {
+		label = 'Dispatch',
+		defaultDuty = true,
+		grades = {
+            ['0'] = {
+                name = 'Operator',
+                payment = 50
+            },
+        },
+	},
+	['farming'] = {
+		label = 'Farmer',
+		defaultDuty = true,
+		grades = {
+            ['0'] = {
+                name = 'Employee',
                 payment = 20
             },
         },
@@ -4904,6 +4925,6 @@ QBShared.Vehicles = {
 		['price'] = 1,
 		['category'] = 'emergency',
 		['hash'] = `pdtaurus`,
-		['shop'] = 'missionrow',
+		['shop'] = 'pd',
 	},
 }
