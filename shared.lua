@@ -471,7 +471,8 @@ QBShared.Items = {
 	["box"] 		                 = {["name"] = "box", 			                ["label"] = "Box", 	                	["weight"] = 100, 		["type"] = "item", 		["image"] = "box.png", 	                ["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,	   ["combinable"] = nil,   ["description"] = "box"},
 	["stone"] 		 	 		     = {["name"] = "stone",                     	["label"] = "Stone",	 	            ["weight"] = 3500, 	    ["type"] = "item", 		["image"] = "stone.png", 		        ["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false,   ["combinable"] = nil,   ["description"] = "ORE"},
 	["washedstone"] 		         = {["name"] = "washedstone",                   ["label"] = "Washed Stone",	 	        ["weight"] = 3500, 	    ["type"] = "item", 		["image"] = "washedstone.png", 		    ["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false,   ["combinable"] = nil,   ["description"] = "ORE"},
-	["specialbadge"] 				 = {["name"] = "specialbadge", 			  		["label"] = "Police Badge", 			["weight"] = 1000, 		["type"] = "item", 		["image"] = "badge11.png", 	            ["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,	   ["combinable"] = nil,   ["description"] = "Special Badge of Law Enforcements"},
+	["specialbadge"] 				 = {["name"] = "specialbadge", 			  		["label"] = "Police Badge", 			["weight"] = 10, 		["type"] = "item", 		["image"] = "badge11.png", 	            ["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,	   ["combinable"] = nil,   ["description"] = "Special Badge of Law Enforcements"},
+	["clothingpack"] 		         = {["name"] = "clothingpack",                  ["label"] = "Clothes Backpack",	 	    ["weight"] = 100, 	    ["type"] = "item", 		["image"] = "shirt.png", 		    ["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   ["combinable"] = nil,   ["description"] = "Use to change outfits"},
 }
 
 -- // HASH WEAPON ITEMS, NEED SOMETIMES TO GET INFO FOR CLIENT
@@ -788,25 +789,25 @@ QBShared.Jobs = {
             },
 			['2'] = {
                 name = 'Fire / EMS',
-                payment = 40
+                payment = 25
             },
 			['3'] = {
                 name = 'Lieutenant',
-                payment = 50
+                payment = 35
             },
 			['4'] = {
                 name = 'Captain',
-                payment = 60
+                payment = 45
             },
 			['5'] = {
                 name = 'Asst. Chief',
 				isboss = true,
-                payment = 65
+                payment = 55
             },
 			['6'] = {
                 name = 'Chief',
 				isboss = true,
-                payment = 70
+                payment = 60
             },
         },
 	},
@@ -1008,13 +1009,30 @@ QBShared.Jobs = {
             },
         },
 	},
-	['dispatcher'] = {
+	['dispatch'] = {
 		label = 'Dispatch',
 		defaultDuty = true,
 		grades = {
             ['0'] = {
-                name = 'Operator',
+                name = 'Probationary Dispatcher',
+                payment = 15
+            },
+			      ['1'] = {
+                name = 'Dispatcher',
+                payment = 25
+            },
+			      ['2'] = {
+                name = 'Dispatch FTO',
+                payment = 40
+            },
+			      ['3'] = {
+                name = 'Senoir Dispatcher',
                 payment = 50
+            },
+			      ['4'] = {
+                name = 'Dispatch Commander',
+				        isboss = true,
+                payment = 60
             },
         },
 	},
@@ -4922,9 +4940,18 @@ QBShared.Vehicles = {
 		['name'] = 'LSPD FPIS',
 		['brand'] = 'Ford',
 		['model'] = 'pdtaurus',
-		['price'] = 1,
+		['price'] = 0,
 		['category'] = 'emergency',
-		['hash'] = `pdtaurus`,
+		['hash'] = 'pdtaurus',
+		['shop'] = 'pd',
+	},
+	['pdexplorer'] = {
+		['name'] = 'LSPD FPIU',
+		['brand'] = 'Ford',
+		['model'] = 'pdexplorer',
+		['price'] = 0,
+		['category'] = 'emergency',
+		['hash'] = `pdexplorer`,
 		['shop'] = 'pd',
 	},
 }
