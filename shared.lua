@@ -41,6 +41,34 @@ QBShared.Round = function(value, numDecimalPlaces)
     return math.floor((value * power) + 0.5) / (power)
 end
 
+QBShared.ChangeVehicleExtra = function (vehicle, extra, enable)
+	if DoesExtraExist(vehicle, extra) then
+		if enable then
+			SetVehicleExtra(vehicle, extra, false)
+			if not IsVehicleExtraTurnedOn(vehicle, extra) then
+				QBShared.ChangeVehicleExtra(vehicle, extra, enable)
+			end
+		else
+			SetVehicleExtra(vehicle, extra, true)
+			if IsVehicleExtraTurnedOn(vehicle, extra) then
+				QBShared.ChangeVehicleExtra(vehicle, extra, enable)
+			end
+		end
+	end
+end
+
+QBShared.SetDefaultVehicleExtras = function (vehicle, config)
+    -- Clear Extras
+    for i=1,20 do
+        if DoesExtraExist(vehicle, i) then
+            SetVehicleExtra(vehicle, i, 1)
+        end
+    end
+
+    for id, enabled in pairs(config) do
+        QBShared.ChangeVehicleExtra(vehicle, tonumber(id), true)
+    end
+end
 
 QBShared.StarterItems = {
     ['phone'] = { amount = 1, item = 'phone' },
@@ -729,6 +757,7 @@ QBShared.Jobs = {
 	['unemployed'] = {
 		label = 'Civilian',
 		defaultDuty = true,
+		offDutyPay = false,
 		grades = {
             ['0'] = {
                 name = 'Freelancer',
@@ -739,6 +768,7 @@ QBShared.Jobs = {
 	['police'] = {
 		label = 'Law Enforcement',
 		defaultDuty = true,
+		offDutyPay = false,
 		grades = {
             ['0'] = {
                 name = 'Recruit',
@@ -778,6 +808,7 @@ QBShared.Jobs = {
 	['ambulance'] = {
 		label = 'EMS',
 		defaultDuty = true,
+		offDutyPay = false,
 		grades = {
             ['0'] = {
                 name = 'Recruit',
@@ -814,6 +845,7 @@ QBShared.Jobs = {
 	['realestate'] = {
 		label = 'Real Estate',
 		defaultDuty = true,
+		offDutyPay = false,
 		grades = {
             ['0'] = {
                 name = 'Recruit',
@@ -841,6 +873,7 @@ QBShared.Jobs = {
 	['taxi'] = {
 		label = 'Taxi',
 		defaultDuty = true,
+		offDutyPay = false,
 		grades = {
             ['0'] = {
                 name = 'Recruit',
@@ -868,6 +901,7 @@ QBShared.Jobs = {
      ['bus'] = {
 		label = 'Bus',
 		defaultDuty = true,
+		offDutyPay = false,
 		grades = {
             ['0'] = {
                 name = 'Driver',
@@ -878,6 +912,7 @@ QBShared.Jobs = {
 	['cardealer'] = {
 		label = 'Vehicle Dealer',
 		defaultDuty = true,
+		offDutyPay = false,
 		grades = {
             ['0'] = {
                 name = 'Recruit',
@@ -905,6 +940,7 @@ QBShared.Jobs = {
 	['mechanic'] = {
 		label = 'Mechanic',
 		defaultDuty = true,
+		offDutyPay = false,
 		grades = {
             ['0'] = {
                 name = 'Recruit',
@@ -932,6 +968,7 @@ QBShared.Jobs = {
 	['judge'] = {
 		label = 'Honorary',
 		defaultDuty = true,
+		offDutyPay = false,
 		grades = {
             ['0'] = {
                 name = 'Judge',
@@ -942,6 +979,7 @@ QBShared.Jobs = {
 	['lawyer'] = {
 		label = 'Law Firm',
 		defaultDuty = true,
+		offDutyPay = false,
 		grades = {
             ['0'] = {
                 name = 'Associate',
@@ -952,6 +990,7 @@ QBShared.Jobs = {
 	['reporter'] = {
 		label = 'Reporter',
 		defaultDuty = true,
+		offDutyPay = false,
 		grades = {
             ['0'] = {
                 name = 'Journalist',
@@ -962,6 +1001,7 @@ QBShared.Jobs = {
 	['trucker'] = {
 		label = 'Trucker',
 		defaultDuty = true,
+		offDutyPay = false,
 		grades = {
             ['0'] = {
                 name = 'Driver',
@@ -972,6 +1012,7 @@ QBShared.Jobs = {
 	['tow'] = {
 		label = 'Towing',
 		defaultDuty = true,
+		offDutyPay = false,
 		grades = {
             ['0'] = {
                 name = 'Driver',
@@ -982,6 +1023,7 @@ QBShared.Jobs = {
 	['garbage'] = {
 		label = 'Garbage',
 		defaultDuty = true,
+		offDutyPay = false,
 		grades = {
             ['0'] = {
                 name = 'Collector',
@@ -992,6 +1034,7 @@ QBShared.Jobs = {
 	['vineyard'] = {
 		label = 'Vineyard',
 		defaultDuty = true,
+		offDutyPay = false,
 		grades = {
             ['0'] = {
                 name = 'Picker',
@@ -1002,6 +1045,7 @@ QBShared.Jobs = {
 	['hotdog'] = {
 		label = 'Hotdog',
 		defaultDuty = true,
+		offDutyPay = false,
 		grades = {
             ['0'] = {
                 name = 'Sales',
@@ -1742,7 +1786,7 @@ QBShared.Vehicles = {
 		['price'] = 9999999,
 		['category'] = 'super',
 		['hash'] = `oppressor`,
-		['shop'] = 'pdm',
+		['shop'] = 'luxury',
 	},
 	['pcj'] = {
 		['name'] = 'PCJ-600',
@@ -4007,7 +4051,7 @@ QBShared.Vehicles = {
 		['price'] = 195000,
 		['category'] = 'sports',
 		['hash'] = `cheetah2`,
-		['shop'] = 'pdm',
+		['shop'] = 'luxury',
 	},
 	['deluxo'] = {
 		['name'] = 'Deluxo',
