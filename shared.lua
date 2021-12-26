@@ -1090,8 +1090,8 @@ QBShared.Jobs = {
             },
         },
 	},
-	['morningstar'] = {
-		label = 'Morningstar Inc.',
+	['morningstarr'] = {
+		label = 'Morningstarr Inc.',
 		defaultDuty = true,
 		grades = {
             ['0'] = {
